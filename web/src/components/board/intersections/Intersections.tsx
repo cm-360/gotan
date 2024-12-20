@@ -1,4 +1,4 @@
-import { Hex } from "../Board";
+import { Hex } from "../../../types";
 import "./Intersections.css";
 
 export interface IntersectionsProps {

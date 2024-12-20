@@ -2,17 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./Board.css";
 import HexRow from "./hexes/HexRow";
 import ClipPaths from "./ClipPaths";
-
-export interface BoardData {
-  width: number;
-  height: number;
-  hexes: Hex[][];
-}
-
-export interface Hex {
-  terrain: string;
-  token: number;
-}
+import { BoardData } from "../../types";
 
 export interface BoardProps {
   board: BoardData;

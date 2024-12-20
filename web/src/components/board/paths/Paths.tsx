@@ -1,4 +1,4 @@
-import { Hex } from "../Board";
+import { Hex } from "../../../types";
 import "./Paths.css";
 
 export interface PathsProps {

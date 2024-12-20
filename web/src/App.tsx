@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Board, { BoardData } from "./components/board/Board";
-
-export interface GameData {
-  board: BoardData;
-}
+import Board from "./components/board/Board";
+import { GameData } from "./types";
+import { API_URL } from "./constants";
 
 export default function App() {
   const [gameId, setGameId] = useState("");
   const [gameData, setGameData] = useState<GameData | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3333/games", {
+    fetch(`${API_URL}/games`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -28,7 +26,7 @@ export default function App() {
       return;
     }
 
-    fetch(`http://localhost:3333/games/${gameId}`)
+    fetch(`${API_URL}/games/${gameId}`)
       .then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);

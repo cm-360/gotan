@@ -1,4 +1,4 @@
-import { Hex } from "../Board";
+import { Hex } from "../../../types";
 import SpacerHex from "../hexes/SpacerHex";
 import TerrainHex from "../hexes/TerrainHex";
 import "./HexRow.css";
