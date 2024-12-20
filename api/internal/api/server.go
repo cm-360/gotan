@@ -16,6 +16,10 @@ type ServerStateType struct {
 var ServerState ServerStateType
 
 func SpawnServer() {
+	ServerState = ServerStateType{
+		Games: map[string]*gotan.Game{},
+	}
+
 	mux := http.NewServeMux()
 
 	mux.HandleFunc(("GET /games"), HandleListGames)

@@ -6,6 +6,7 @@ import (
 	"maps"
 	"math/rand"
 	"net/http"
+	"path"
 	"strings"
 
 	gotan "cm360.xyz/gotan-api/pkg/game"
@@ -23,8 +24,8 @@ type createGameResponse struct {
 }
 
 type getGameResponse struct {
-	Ruleset *gotan.Ruleset
-	Board   *gotan.Board
+	Ruleset *gotan.Ruleset `json:"ruleset"`
+	Board   *gotan.Board   `json:"board"`
 	// TODO: include masked player data
 }
 
@@ -47,7 +48,8 @@ func HandleCreateGame(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	newGame, err := gotan.NewGame(reqData.RulesetFilename)
+	// TODO: protect against path traversal
+	newGame, err := gotan.NewGame(path.Join("./rulesets", reqData.RulesetFilename))
 	if err != nil {
 		message := fmt.Sprintf("Failed to create game: %s", err)
 		WriteError(w, http.StatusInternalServerError, message)

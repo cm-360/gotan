@@ -3,7 +3,7 @@ import "./Board.css";
 import HexRow from "./hexes/HexRow";
 import ClipPaths from "./ClipPaths";
 
-export interface Board {
+export interface BoardData {
   width: number;
   height: number;
   hexes: Hex[][];
@@ -14,9 +14,11 @@ export interface Hex {
   token: number;
 }
 
-export default function Board() {
-  const [boardData, setBoardData] = useState<Board | null>(null);
+export interface BoardProps {
+  board: BoardData;
+}
 
+export default function Board({ board }: BoardProps) {
   const [dragging, setDragging] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [prevMouseX, setPrevMouseX] = useState(0);
@@ -24,15 +26,6 @@ export default function Board() {
   const [prevMouseY, setPrevMouseY] = useState(0);
   const [offsetX, setOffsetX] = useState(0);
   const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    fetch(`http://localhost:3333/board`)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        setBoardData(responseJson);
-      });
-  }, [setBoardData]);
 
   const onMouseDown = useCallback(
     (event: React.MouseEvent) => {
@@ -80,11 +73,7 @@ export default function Board() {
     };
   }, [dragging, onMouseMove, onMouseUp]);
 
-  if (!boardData) {
-    return <></>;
-  }
-
-  const hexRows = transformBoard(boardData).hexes.map((row, rowIndex) => (
+  const hexRows = transformBoard(board).hexes.map((row, rowIndex) => (
     <HexRow key={rowIndex} row={row} rowIndex={rowIndex} />
   ));
 
@@ -98,7 +87,7 @@ export default function Board() {
   );
 }
 
-function transformBoard(board: Board): Board {
+function transformBoard(board: BoardData): BoardData {
   // Determine spacer count needed for each row
   const spacerCounts = board.hexes.map((row, rowIndex) => {
     const leadingNullCount = row.findIndex((hex) => hex !== null);
