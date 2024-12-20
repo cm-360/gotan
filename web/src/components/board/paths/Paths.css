@@ -1,0 +1,40 @@
+.path {
+  z-index: 1;
+  position: absolute;
+  width: var(--path-size);
+  height: var(--height);
+
+  --height: calc(0.5 * var(--hex-inner-height));
+  --x-translate: calc(0.5 * (var(--hex-inner-width) + var(--path-size)));
+  --y-translate: calc(0.5 * (var(--hex-outer-height) - var(--height)));
+
+  top: var(--y-translate);
+  left: var(--x-translate);
+
+  transform: translateX(calc(-1 * var(--x-translate)));
+}
+
+.path-w {
+  rotate: 0deg;
+}
+.path-nw {
+  rotate: 60deg;
+}
+.path-ne {
+  rotate: 120deg;
+}
+
+.path.selectable {
+  background-color: royalblue;
+  filter: opacity(0.3);
+}
+.path.selectable:hover {
+  z-index: 2;
+  cursor: pointer;
+  filter: opacity(0.7);
+  box-shadow: 0 0 5px 5px white;
+}
+
+.path.road {
+  background-color: royalblue;
+}

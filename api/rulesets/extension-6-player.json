@@ -1,0 +1,60 @@
+{
+    "board_width": 6,
+    "board_height": 7,
+    "terrain_counts": {
+        "hills": 5,
+        "forest": 6,
+        "mountains": 5,
+        "fields": 6,
+        "pasture": 6,
+        "desert": 2
+    },
+    "harbors": {},
+    "token_counts": {
+        "2": 2,
+        "3": 3,
+        "4": 3,
+        "5": 3,
+        "6": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 2
+    },
+    "resource_card_counts": {
+        "brick": 24,
+        "lumber": 24,
+        "ore": 24,
+        "grain": 24,
+        "wool": 24
+    },
+    "development_card_counts": {
+        "knight": 20,
+        "progress_road_building": 3,
+        "progress_year_of_plenty": 3,
+        "progress_monopoly": 3,
+        "victory_point_chapel": 1,
+        "victory_point_great_hall": 1,
+        "victory_point_library": 1,
+        "victory_point_market": 1,
+        "victory_point_university": 1
+    },
+    "min_players": 5,
+    "max_players": 6,
+    "per_player": {
+        "cities": 4,
+        "settlements": 5,
+        "roads": 15
+    },
+    "robber_count": 1,
+    "allow_red_token_neighbors": false,
+    "only_starter_produces": true,
+    "point_values": {
+        "settlement": 1,
+        "city": 2,
+        "longest_road_card": 2,
+        "largest_army_card": 2,
+        "victory_point_card": 1
+    }
+}

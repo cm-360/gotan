@@ -1,0 +1,43 @@
+/*
+ * z-order
+ * 
+ * 1: path
+ * 2: path (highlight)
+ * 3: intersection
+ */
+
+.board {
+  /* 1.1547 = 2 / sqrt(3) */
+  --hexagon-aspect: 1.1547;
+
+  --path-size: 15px;
+  --road-size: 10px;
+  --hex-inner-width: 150px;
+  --hex-inner-height: calc(var(--hex-inner-width) * var(--hexagon-aspect));
+  --hex-outer-width: calc(var(--hex-inner-width) + (2 * var(--path-size)));
+  --hex-outer-height: calc(var(--hex-outer-width) * var(--hexagon-aspect));
+
+  --color-water: lightskyblue;
+  --color-path: sandybrown;
+  --color-terrain-hills: firebrick;
+  --color-terrain-forest: forestgreen;
+  --color-terrain-mountains: gray;
+  --color-terrain-fields: goldenrod;
+  --color-terrain-pasture: limegreen;
+  --color-terrain-desert: peru;
+
+  background-color: var(--color-water);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hex-grid {
+  user-select: none;
+  position: relative;
+  padding-right: var(--path-size);
+}

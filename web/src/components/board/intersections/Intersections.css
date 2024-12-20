@@ -1,0 +1,27 @@
+.intersection {
+  z-index: 3;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+
+  --size: 20px;
+  --x-translate: calc(0.5 * (var(--hex-outer-width) - var(--size)));
+  --y-translate: calc(
+    0.5 * (var(--hex-outer-height) - var(--hex-inner-height))
+      /* TODO: fix math (dont use magic number) */
+      - 1.25 * var(--path-size)
+  );
+  border-radius: calc(0.5 * var(--size));
+
+  left: var(--x-translate);
+
+  background-color: red;
+}
+
+.intersection-n {
+  top: var(--y-translate);
+}
+
+.intersection-s {
+  bottom: var(--y-translate);
+}

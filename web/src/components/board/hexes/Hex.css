@@ -1,0 +1,57 @@
+.hex-wrapper {
+  position: relative;
+}
+
+.hex {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+
+  /* https://www.cssportal.com/css-clip-path-generator/ */
+  /* clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); */
+  clip-path: url(#hexagon-clip);
+}
+
+.hex-outer,
+.hex-spacer {
+  width: var(--hex-outer-width);
+  height: var(--hex-outer-height);
+  margin-right: calc(-1 * var(--path-size));
+  flex-shrink: 0;
+}
+
+.hex-inner {
+  width: var(--hex-inner-width);
+  height: var(--hex-inner-height);
+}
+
+.hex-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Terrain colors */
+
+.hex.terrain {
+  background-color: var(--color-path);
+}
+.hex.terrain-hills {
+  background-color: var(--color-terrain-hills);
+}
+.hex.terrain-forest {
+  background-color: var(--color-terrain-forest);
+}
+.hex.terrain-mountains {
+  background-color: var(--color-terrain-mountains);
+}
+.hex.terrain-fields {
+  background-color: var(--color-terrain-fields);
+}
+.hex.terrain-pasture {
+  background-color: var(--color-terrain-pasture);
+}
+.hex.terrain-desert {
+  background-color: var(--color-terrain-desert);
+}

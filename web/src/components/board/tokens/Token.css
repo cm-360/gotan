@@ -1,0 +1,17 @@
+.token {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  line-height: 0.8;
+  background-color: peachpuff;
+  box-shadow: 0 2px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+.token.red {
+  color: red;
+}
