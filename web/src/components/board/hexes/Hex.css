@@ -16,8 +16,11 @@
 .hex-spacer {
   width: var(--hex-outer-width);
   height: var(--hex-outer-height);
+}
+
+.hex-wrapper:not(:last-child),
+.hex-spacer:not(:last-child) {
   margin-right: calc(-1 * var(--path-size));
-  flex-shrink: 0;
 }
 
 .hex-inner {

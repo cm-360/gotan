@@ -39,5 +39,4 @@
 .hex-grid {
   user-select: none;
   position: relative;
-  padding-right: var(--path-size);
 }

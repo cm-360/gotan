@@ -1,5 +1,8 @@
 .hex-row {
   display: flex;
+}
+
+.hex-row:not(:last-child) {
   /* 0.866 = sqrt(3) / 2 */
   margin-bottom: calc(
     (-0.25 * var(--hex-outer-height)) - (0.866 * var(--path-size))
