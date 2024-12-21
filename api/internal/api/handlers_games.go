@@ -33,8 +33,9 @@ func HandleListGames(w http.ResponseWriter, r *http.Request) {
 	SetCorsHeaders(w)
 
 	ServerState.Mutex.Lock()
+	defer ServerState.Mutex.Unlock()
+
 	WriteJson(w, maps.Keys(ServerState.Games))
-	ServerState.Mutex.Unlock()
 }
 
 func HandleCreateGame(w http.ResponseWriter, r *http.Request) {
@@ -57,6 +58,8 @@ func HandleCreateGame(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ServerState.Mutex.Lock()
+	defer ServerState.Mutex.Unlock()
+
 	var gameId string
 	for {
 		gameId = generateGameId(gameIdLength)
@@ -67,7 +70,6 @@ func HandleCreateGame(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ServerState.Games[gameId] = newGame
-	ServerState.Mutex.Unlock()
 	WriteJson(w, createGameResponse{GameId: gameId})
 }
 
@@ -82,17 +84,16 @@ func HandleDeleteGame(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ServerState.Mutex.Lock()
+	defer ServerState.Mutex.Unlock()
+
 	_, exists := ServerState.Games[gameId]
 	if !exists {
-		ServerState.Mutex.Unlock()
-
 		message := fmt.Sprintf("Unrecognized game ID: %s", gameId)
 		WriteError(w, http.StatusNotFound, message)
 		return
 	}
 
 	delete(ServerState.Games, gameId)
-	ServerState.Mutex.Unlock()
 	w.WriteHeader(http.StatusNoContent)
 }
 
@@ -107,10 +108,10 @@ func HandleGetGame(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ServerState.Mutex.Lock()
+	defer ServerState.Mutex.Unlock()
+
 	game, exists := ServerState.Games[gameId]
 	if !exists {
-		ServerState.Mutex.Unlock()
-
 		message := fmt.Sprintf("Unrecognized game ID: %s", gameId)
 		WriteError(w, http.StatusNotFound, message)
 		return
@@ -121,7 +122,6 @@ func HandleGetGame(w http.ResponseWriter, r *http.Request) {
 		Board:   game.Board,
 	}
 	WriteJson(w, response)
-	ServerState.Mutex.Unlock()
 }
 
 func generateGameId(length int) string {

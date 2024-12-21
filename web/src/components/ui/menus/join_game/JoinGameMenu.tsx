@@ -13,13 +13,13 @@ export default function JoinGameMenu() {
 
   const match = useMatch("/join/:gameId");
   const [gameId, setGameId] = useState(match?.params.gameId || "");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
   const joinGame = useCallback(
-    (gameId: string, username: string) => {
+    (gameId: string, name: string) => {
       fetchWithJson(
         `${API_URL}/games/${gameId}/players`,
-        { username },
+        { name },
         { method: "POST" }
       )
         .then(checkStatus)
@@ -51,7 +51,7 @@ export default function JoinGameMenu() {
           <MenuSection>
             <form
               id="join_game_form"
-              onSubmit={(e) => onSubmit(e, gameId, username)}
+              onSubmit={(e) => onSubmit(e, gameId, name)}
             >
               <div className="form-group">
                 <label htmlFor="game_id_input">Game ID</label>
@@ -61,12 +61,12 @@ export default function JoinGameMenu() {
                   value={gameId}
                   onChange={(e) => setGameId(e.currentTarget.value)}
                 />
-                <label htmlFor="username_input">Username</label>
+                <label htmlFor="name_input">Username</label>
                 <input
-                  id="username_input"
+                  id="name_input"
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.currentTarget.value)}
+                  value={name}
+                  onChange={(e) => setName(e.currentTarget.value)}
                 />
               </div>
               <div className="form-group">
