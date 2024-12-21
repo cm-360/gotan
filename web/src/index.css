@@ -4,6 +4,8 @@
   --color-primary: royalblue;
   --color-secondary: green;
 
+  --color-go-blue: #00aed8;
+
   --transition-time: 0.3s;
 }
 
@@ -23,6 +25,18 @@ h4,
 h5,
 h6 {
   margin: 0;
+}
+
+input {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border: unset;
+  border-radius: 0.5rem;
+  font-size: inherit;
+}
+
+label {
+  display: block;
 }
 
 body {

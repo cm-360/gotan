@@ -28,14 +28,16 @@ export default function CreateGameMenu() {
 
   return (
     <Modal>
-      <Menu>
-        <MenuHeader>
-          <h1>Create Game</h1>
-        </MenuHeader>
-        <MenuSection>
-          <PrimaryButton onClick={createGame}>Create</PrimaryButton>
-        </MenuSection>
-      </Menu>
+      <div className="block-container">
+        <Menu>
+          <MenuHeader>
+            <h1>Create Game</h1>
+          </MenuHeader>
+          <MenuSection>
+            <PrimaryButton onClick={createGame}>Create</PrimaryButton>
+          </MenuSection>
+        </Menu>
+      </div>
     </Modal>
   );
 }

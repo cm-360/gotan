@@ -43,33 +43,39 @@ export default function JoinGameMenu() {
 
   return (
     <Modal>
-      <Menu>
-        <MenuHeader>
-          <h1>Join Game</h1>
-        </MenuHeader>
-        <MenuSection>
-          <form
-            id="join_game_form"
-            onSubmit={(e) => onSubmit(e, gameId, username)}
-          >
-            <label htmlFor="game_id_input">Game ID</label>
-            <input
-              id="game_id_input"
-              type="text"
-              value={gameId}
-              onChange={(e) => setGameId(e.currentTarget.value)}
-            />
-            <label htmlFor="username_input">Username</label>
-            <input
-              id="username_input"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.currentTarget.value)}
-            />
-            <PrimaryButton>Join</PrimaryButton>
-          </form>
-        </MenuSection>
-      </Menu>
+      <div className="block-container">
+        <Menu>
+          <MenuHeader>
+            <h1>Join Game</h1>
+          </MenuHeader>
+          <MenuSection>
+            <form
+              id="join_game_form"
+              onSubmit={(e) => onSubmit(e, gameId, username)}
+            >
+              <div className="form-group">
+                <label htmlFor="game_id_input">Game ID</label>
+                <input
+                  id="game_id_input"
+                  type="text"
+                  value={gameId}
+                  onChange={(e) => setGameId(e.currentTarget.value)}
+                />
+                <label htmlFor="username_input">Username</label>
+                <input
+                  id="username_input"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.currentTarget.value)}
+                />
+              </div>
+              <div className="form-group">
+                <PrimaryButton>Join</PrimaryButton>
+              </div>
+            </form>
+          </MenuSection>
+        </Menu>
+      </div>
     </Modal>
   );
 }
