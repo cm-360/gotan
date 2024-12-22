@@ -36,6 +36,10 @@ export default function GameView() {
     gameData: gameData,
   };
 
+  // bottom left: chat / game log
+  // bottom center: resources, actions, dice?
+  // left center: dice display?
+
   return (
     <GameContext.Provider value={contextValue}>
       <Board board={gameData.board} />

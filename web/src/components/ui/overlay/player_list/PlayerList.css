@@ -2,5 +2,23 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 20em;
+  width: 25em;
+  z-index: 5;
+}
+
+.player-list-item {
+  margin: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.player-list-item .player-cards {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.player-list-item .numbered {
+  display: grid;
+  justify-items: center;
 }

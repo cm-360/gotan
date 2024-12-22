@@ -1,17 +1,28 @@
 import { Player } from "../../../../types";
+import Card from "../../../cards/Card";
 
 export interface PlayerListItemProps {
   player: Player;
 }
 
+// Consider for icons: https://github.com/laurentpayot/minidenticons
+
 export default function PlayerListItem({ player }: PlayerListItemProps) {
   return (
-    <div>
-      <div>{`Name: ${player.name}`}</div>
-      <div>{`Color: ${player.color}`}</div>
-      <div>{`R. Cards: ${JSON.stringify(player.resource_cards)}`}</div>
-      <div>{`D. Cards: ${JSON.stringify(player.development_cards)}`}</div>
-      <div>{`S: ${player.settlements}, C: ${player.cities}, R: ${player.roads}`}</div>
+    <div className="player-list-item block-container">
+      <div className="player-name">
+        <div style={{ color: player.color }}>{player.name}</div>
+      </div>
+      <div className="player-cards">
+        <div className="numbered">
+          <Card>Res</Card>
+          <div>{player.resource_cards.length}</div>
+        </div>
+        <div className="numbered">
+          <Card>Dev</Card>
+          <div>{player.development_cards.length}</div>
+        </div>
+      </div>
     </div>
   );
 }
