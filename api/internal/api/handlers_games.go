@@ -26,7 +26,8 @@ type createGameResponse struct {
 type getGameResponse struct {
 	Ruleset *gotan.Ruleset `json:"ruleset"`
 	Board   *gotan.Board   `json:"board"`
-	// TODO: include masked player data
+	// TODO: mask player data
+	Players []*gotan.Player `json:"players"`
 }
 
 func HandleListGames(w http.ResponseWriter, r *http.Request) {
@@ -120,6 +121,7 @@ func HandleGetGame(w http.ResponseWriter, r *http.Request) {
 	response := getGameResponse{
 		Ruleset: game.Ruleset,
 		Board:   game.Board,
+		Players: game.Players,
 	}
 	WriteJson(w, response)
 }

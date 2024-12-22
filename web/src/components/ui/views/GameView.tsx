@@ -5,10 +5,11 @@ import { GameContext } from "../../../contexts/GameContext";
 import { GameData } from "../../../types";
 import { checkStatus } from "../../../utils";
 import Board from "../../board/Board";
+import PlayerList from "../overlay/player_list/PlayerList";
 
 export default function GameView() {
-  const match = useMatch("/play/:roomId");
-  const gameId = match?.params.roomId;
+  const match = useMatch("/play/:gameId");
+  const gameId = match?.params.gameId;
   const [gameData, setGameData] = useState<GameData | null>(null);
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function GameView() {
   return (
     <GameContext.Provider value={contextValue}>
       <Board board={gameData.board} />
+      <PlayerList players={gameData.players} />
     </GameContext.Provider>
   );
 }
